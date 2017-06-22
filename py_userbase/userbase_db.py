@@ -567,7 +567,7 @@ class Database:
         resp = userbase_models.ConnectUserResponse.invalid()
         conn = None
         try:
-            token = userbase_models.Token(str(uuid.uuid4()), datetime.datetime.now() + datetime.timedelta(days=1))
+            token = userbase_models.Token(str(uuid.uuid4())[:8].upper(), datetime.datetime.now() + datetime.timedelta(days=1))
             conn = psycopg2.connect(**self.config)
             cur = conn.cursor()
             cur.execute("INSERT INTO user_recovery_tokens (id_user,token,expiration) VALUES (%(id)s, %(token)s, %(expiration)s);",
