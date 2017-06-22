@@ -294,7 +294,7 @@ class Database:
                 email = row[0]
             cur.close()
 
-            send_email_func(self.__create_recovery_token_response(id_user).Token, email, self.fn_log_error)
+            send_email_func(self.__create_recovery_token_response(id_user).Token, username, email, self.fn_log_error)
 
             resp = True
         except (Exception, psycopg2.DatabaseError) as error:
