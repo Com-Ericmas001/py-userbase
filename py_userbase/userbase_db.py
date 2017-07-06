@@ -630,7 +630,7 @@ class Database:
 
     def __get_summary(self, conn_resp):
         """ validate user credentials """
-        return  userbase_models.UserSummaryResponse(True, conn_resp.Token, self.__get_profile(conn_resp.IdUser), self.__get_groups(conn_resp.IdUser))
+        return  userbase_models.UserSummaryResponse(conn_resp.Success, conn_resp.Token, self.__get_profile(conn_resp.IdUser), self.__get_groups(conn_resp.IdUser))
 
     def __get_profile(self, id_user):
         """ validate user credentials """
